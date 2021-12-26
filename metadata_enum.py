@@ -3,7 +3,7 @@ background_rarity = {
     "Hell": 926,
     "Blue_dust": 956,
     "Lemon": 977,
-    "Lavender": 986,
+    "Lavender": 985,
     "Sky": 1008,
     "Sky_pink": 1012,
     "Blueblack": 1023,
