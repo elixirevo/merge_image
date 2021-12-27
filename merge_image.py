@@ -3,7 +3,9 @@ import os
 import random
 import json
 import numpy as np
-from metadata_enum import background_rarity, skin_rarity, tatto_rarity, hat_rarity, eyes_rarity, clothes_rarity, mouth_rarity, back_rarity, weapon_rarity
+from metadata_enum import background_rarity, skin_rarity, tatto_rarity, hat_rarity, eyes_rarity,\
+    clothes_rarity, mouth_rarity, back_rarity, weapon_rarity
+
 
 def mergeImage():
     background_list = os.listdir("./MYBOX/Background/")
@@ -37,7 +39,8 @@ def mergeImage():
         count_back = np.sum(list(available_back_rarity.values()))
         count_weapon = np.sum(list(available_weapon_rarity.values()))
 
-        all_count = count_background + count_skin + count_tatto + count_hat + count_eyes + count_clothes + count_mouth + count_back + count_weapon
+        all_count = count_background + count_skin + count_tatto + count_hat + \
+            count_eyes + count_clothes + count_mouth + count_back + count_weapon
 
         if all_count == 0:
             print("Make image is done")
@@ -66,7 +69,7 @@ def mergeImage():
             while(background_rarity[f"{slice_background_name}"] == 0):
                 choiced_background = random.choice(background_list)
                 slice_background_name = choiced_background[0:-4]
-            
+
             while(skin_rarity[f"{slice_body_name}"] == 0):
                 choiced_body = random.choice(body_list)
                 slice_body_name = choiced_body[0:-4]
@@ -77,7 +80,7 @@ def mergeImage():
 
             while(clothes_rarity[f"{slice_clothe_name}"] == 0):
                 choiced_clothe = random.choice(clothes_list)
-                slice_clothe_name = choiced_clothe[0:-4]  
+                slice_clothe_name = choiced_clothe[0:-4]
 
             while(hat_rarity[f"{slice_hat_name}"] == 0):
                 choiced_hat = random.choice(hat_list)
@@ -114,15 +117,24 @@ def mergeImage():
                 'weapon': slice_weapon_name,
             })
 
-            background = Image.open(f"./MYBOX/Background/{slice_background_name}.png").convert("RGBA")
-            body = Image.open(f"./MYBOX/Skin_color/{slice_body_name}.png").convert("RGBA")
-            eye = Image.open(f"./MYBOX/Eyes/{slice_eye_name}.png").convert("RGBA")
-            clothes = Image.open(f"./MYBOX/Clothes/{slice_clothe_name}.png").convert("RGBA")
-            hat = Image.open(f"./MYBOX/Hat/{slice_hat_name}.png").convert("RGBA")
-            mouth = Image.open(f"./MYBOX/Mouth/{slice_mouth_name}.png").convert("RGBA")
-            tatto = Image.open(f"./MYBOX/Tattoo/{slice_tatto_name}.png").convert("RGBA")
-            back = Image.open(f"./MYBOX/Back/{slice_back_name}.png").convert("RGBA")
-            weapon = Image.open(f"./MYBOX/Weapon/{slice_weapon_name}.png").convert("RGBA")
+            background = Image.open(
+                f"./MYBOX/Background/{slice_background_name}.png").convert("RGBA")
+            body = Image.open(
+                f"./MYBOX/Skin_color/{slice_body_name}.png").convert("RGBA")
+            eye = Image.open(
+                f"./MYBOX/Eyes/{slice_eye_name}.png").convert("RGBA")
+            clothes = Image.open(
+                f"./MYBOX/Clothes/{slice_clothe_name}.png").convert("RGBA")
+            hat = Image.open(
+                f"./MYBOX/Hat/{slice_hat_name}.png").convert("RGBA")
+            mouth = Image.open(
+                f"./MYBOX/Mouth/{slice_mouth_name}.png").convert("RGBA")
+            tatto = Image.open(
+                f"./MYBOX/Tattoo/{slice_tatto_name}.png").convert("RGBA")
+            back = Image.open(
+                f"./MYBOX/Back/{slice_back_name}.png").convert("RGBA")
+            weapon = Image.open(
+                f"./MYBOX/Weapon/{slice_weapon_name}.png").convert("RGBA")
 
             save_image_path = "./images"
             save_metadata_path = "./metaData"
@@ -131,17 +143,17 @@ def mergeImage():
                 os.mkdir(save_image_path)
             if not os.path.isdir(save_metadata_path):
                 os.mkdir(save_metadata_path)
-            
+
             (heigh, width) = background.size
 
-            background.paste(body, (0,0), body)
-            background.paste(eye, (0,0), eye)
-            background.paste(clothes, (0,0), clothes)
-            background.paste(hat, (0,0), hat)
-            background.paste(mouth, (0,0), mouth)
-            background.paste(tatto, (0,0), tatto)
-            background.paste(back, (0,0), back)
-            background.paste(weapon, (0,0), weapon)
+            background.paste(body, (0, 0), body)
+            background.paste(eye, (0, 0), eye)
+            background.paste(clothes, (0, 0), clothes)
+            background.paste(hat, (0, 0), hat)
+            background.paste(mouth, (0, 0), mouth)
+            background.paste(tatto, (0, 0), tatto)
+            background.paste(back, (0, 0), back)
+            background.paste(weapon, (0, 0), weapon)
 
             background.save(f"./images/test{i}.png", "PNG")
             with open(f"{save_metadata_path}/metadata{i}.json", "w") as outfile:
