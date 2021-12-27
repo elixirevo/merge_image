@@ -17,6 +17,10 @@ def mergeImage():
     tatto_list = os.listdir("./MYBOX/Tattoo/")
     back_list = os.listdir("./MYBOX/Back/")
     weapon_list = os.listdir("./MYBOX/Weapon/")
+    with open('./hidden.json') as json_file:
+        hidden_data = json.load(json_file)
+
+    hidden_properties = hidden_data['metadata']
 
     available_background_rarity = background_rarity
     available_skin_rarity = skin_rarity
@@ -27,6 +31,9 @@ def mergeImage():
     available_mouth_rarity = mouth_rarity
     available_back_rarity = back_rarity
     available_weapon_rarity = weapon_rarity
+
+    metadata = {}
+    metadata['metadata'] = []
 
     for i in range(0, 9928):
         count_background = np.sum(list(available_background_rarity.values()))
@@ -66,6 +73,19 @@ def mergeImage():
             slice_back_name = choiced_back[0:-4]
             slice_weapon_name = choiced_weapon[0:-4]
 
+            for hidden_property in hidden_properties:
+                if slice_background_name == hidden_property['background'] and \
+                    slice_body_name ==hidden_property['body'] and \
+                    slice_eye_name == hidden_property['eye'] and \
+                    slice_tatto_name == hidden_property['tatto'] and \
+                    slice_hat_name == hidden_property['hat'] and \
+                    slice_clothe_name == hidden_property['clothe'] and \
+                    slice_mouth_name == hidden_property['mouth'] and \
+                    slice_back_name == hidden_property['back'] and \
+                    slice_weapon_name == hidden_property['weapon']:
+                    print(i)
+                    return
+
             while(background_rarity[f"{slice_background_name}"] == 0):
                 choiced_background = random.choice(background_list)
                 slice_background_name = choiced_background[0:-4]
@@ -101,9 +121,7 @@ def mergeImage():
             while(weapon_rarity[f"{slice_weapon_name}"] == 0):
                 choiced_weapon = random.choice(weapon_list)
                 slice_weapon_name = choiced_weapon[0:-4]
-
-            metadata = {}
-            metadata['metadata'] = []
+    
             metadata['metadata'].append({
                 'image': f"test{i}.png",
                 'background': slice_background_name,
@@ -156,8 +174,6 @@ def mergeImage():
             background.paste(weapon, (0, 0), weapon)
 
             background.save(f"./images/test{i}.png", "PNG")
-            with open(f"{save_metadata_path}/metadata{i}.json", "w") as outfile:
-                json.dump(metadata, outfile)
 
             available_background_rarity[f"{slice_background_name}"] -= 1
             available_skin_rarity[f"{slice_body_name}"] -= 1
@@ -168,6 +184,8 @@ def mergeImage():
             available_mouth_rarity[f"{slice_mouth_name}"] -= 1
             available_back_rarity[f"{slice_back_name}"] -= 1
             available_weapon_rarity[f"{slice_weapon_name}"] -= 1
+    with open(f"{save_metadata_path}/metadata.json", "w") as outfile:
+        json.dump(metadata, outfile)
 
 
 mergeImage()
