@@ -145,13 +145,13 @@ def mergeImage():
     available_back_rarity = back_rarity
     available_weapon_rarity = weapon_rarity
 
-    metadata = {}
-    metadata['metadata'] = []
-
     created_metadata_info_list = []
 
-    for i in range(0, 9928):
+    # for i in range(0, 9928):
+    for i in range(0, 2):
         metadata_info_list = os.listdir("./metaData/")
+        metadata = {}
+        metadata['metadata'] = []
 
         count_background = np.sum(list(available_background_rarity.values()))
         count_skin = np.sum(list(available_skin_rarity.values()))
