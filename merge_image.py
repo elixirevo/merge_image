@@ -101,7 +101,7 @@ def verifyHidden(hidden_properties, created_metadata_info_list, slice_background
                 slice_back_name == used_property['back'] and \
                 slice_weapon_name == used_property['weapon']:
             verify_list.append(False)
-    print(verify_list)
+    # print(verify_list)
     return verify_list
 
 
@@ -147,8 +147,8 @@ def mergeImage():
 
     created_metadata_info_list = []
 
-    for i in range(0, 9928):
-    # for i in range(0, 2):
+    # for i in range(0, 9928):
+    for i in range(0, 10):
         metadata_info_list = os.listdir("./metaData/")
         metadata = {}
         metadata['metadata'] = []
@@ -163,15 +163,15 @@ def mergeImage():
         count_back = np.sum(list(available_back_rarity.values()))
         count_weapon = np.sum(list(available_weapon_rarity.values()))
 
-        print("background", count_background)
-        print("skin", count_skin)
-        print("count_tatto", count_tatto)
-        print("count_hat", count_hat)
-        print("count_eyes", count_eyes)
-        print("count_clothes", count_clothes)
-        print("count_mouth", count_mouth)
-        print("count_back", count_back)
-        print("count_weapon", count_weapon)
+        # print("background", count_background)
+        # print("skin", count_skin)
+        # print("count_tatto", count_tatto)
+        # print("count_hat", count_hat)
+        # print("count_eyes", count_eyes)
+        # print("count_clothes", count_clothes)
+        # print("count_mouth", count_mouth)
+        # print("count_back", count_back)
+        # print("count_weapon", count_weapon)
 
         all_count = count_background + count_skin + count_tatto + count_hat + \
             count_eyes + count_clothes + count_mouth + count_back + count_weapon
@@ -203,7 +203,7 @@ def mergeImage():
                     slice_background_name, slice_body_name, slice_eye_name, slice_clothe_name, slice_hat_name, slice_mouth_name, slice_tatto_name, slice_back_name, slice_weapon_name = foundImage()
                     is_used_property = verifyHidden(hidden_properties, created_metadata_info_list, slice_background_name, slice_body_name, slice_eye_name,
                                                     slice_tatto_name, slice_hat_name, slice_clothe_name, slice_mouth_name, slice_back_name, slice_weapon_name)
-                    print(is_used_property)
+                    # print(is_used_property)
 
             metadata['metadata'].append({
                 'image': f"test{i}.png",
