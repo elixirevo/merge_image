@@ -3,12 +3,12 @@ background_rarity = {
     "Hell": 926,
     "Blue_dust": 956,
     "Lemon": 977,
-    "Lavender": 985,
+    "Lavender": 986,
     "Sky": 1008,
     "Sky_pink": 1012,
     "Blueblack": 1023,
     "Crimson": 1028,
-    "Desert": 1086,
+    "Desert": 1087,
 }
 
 skin_rarity = {

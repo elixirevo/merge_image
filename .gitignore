@@ -144,6 +144,9 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-MYBOX
-*.xlsx
-*.json
+# MYBOX
+# *.xlsx
+# *.json
+
+# images
+# metaData
