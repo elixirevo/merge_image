@@ -147,8 +147,8 @@ def mergeImage():
 
     created_metadata_info_list = []
 
-    # for i in range(0, 9928):
-    for i in range(0, 2):
+    for i in range(0, 9928):
+    # for i in range(0, 2):
         metadata_info_list = os.listdir("./metaData/")
         metadata = {}
         metadata['metadata'] = []
